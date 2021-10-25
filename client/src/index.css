@@ -1,0 +1,157 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: sans-serif;
+  outline: none;
+  text-decoration: none;
+  background-color: #eee9;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 40px;
+  background-color: #3339;
+  box-shadow: 2px 2px darkblue;
+}
+
+.auth-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.auth-container > h1 {
+  font-size: 2em;
+  margin: 24px;
+}
+
+.auth-container > p {
+  margin: 16px;
+  text-decoration: underline;
+}
+
+.auth-container > form {
+  border: 1px solid #3339;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #aaa9;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-container > form > input {
+  margin: 16px 8px;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.auth-container > form > button {
+  margin: 16px 8px;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+
+.public {
+  height: 100vh;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.profile > h1 {
+  margin: 8px;
+  font-size: 2em;
+  text-align: center;
+}
+
+.profile > h3 {
+  margin: 16px 0;
+  text-decoration: underline;
+}
+
+.profile > form {
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0;
+  border: 1px solid #3339;
+  background-color: #aaa9;
+  padding: 16px;
+  border-radius: 5px
+}
+
+.profile > form > input,
+.profile > form > button {
+  margin: 8px 0;
+  padding: 8px;
+  border-radius: 5px
+}
+
+img {
+  height: 100px;
+  width: 100px;
+}
+.issue-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.topics {
+  text-align: center;
+  justify-content: center;
+}
+.issue {
+  padding: 20px;
+  box-shadow: 2px 5px #888888;
+  border: 1px solid darkblue;
+  margin: 15px;
+}
+.public > h1 {
+  text-align: center;
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 35px;
+  text-shadow: 1px 1px darkblue;
+}
+
+.public {
+  text-align: center;
+  justify-content: center;
+  margin: 40px;
+  padding: 5px;
+}
+.publicIssues {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+
+}
+
+.user-issue > h3 {
+  font-size: 20px;
+  font-style: italic;
+  text-decoration: underline;
+  margin-top: 10px;
+}
+
+button {
+  margin: 5px;
+  font-size: 10px;
+}
