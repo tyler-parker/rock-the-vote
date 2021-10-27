@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import User from './User.js'
 import axios from "axios"
+import {
+  Box
+} from '@chakra-ui/react'
 
 export default function Public() {
   const userAxios = axios.create()
@@ -20,11 +23,11 @@ export default function Public() {
   }, [])
 
   return (
-    <div className="public">
+    <Box h='100vh'>
     <h1>Public Issues</h1>
     <div className="publicIssues">
       {users.map(user => <User {...user}  key={user._id}/>)}
     </div>
-    </div>
+    </Box>
   )
 }

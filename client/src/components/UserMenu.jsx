@@ -25,7 +25,7 @@ export default function UserMenu(props) {
                   cursor={'pointer'}
                   minW={0}>
                   <Avatar
-                    size={'sm'}
+                    size={'md'}
                     src={avatarUrl}
                   />
                 </MenuButton>

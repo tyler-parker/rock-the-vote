@@ -1,6 +1,7 @@
 import React, {useContext} from "react"
 import { Route, Switch, Redirect} from "react-router-dom";
 import Navbar from "./components/Navbar.js"
+import Footer from './components/Footer'
 import Auth from "./components/Auth.js"
 import Profile from "./components/Profile.js"
 import Public from "./components/Public.js"
@@ -13,7 +14,7 @@ export default function App() {
     const { token, logout } = useContext(UserContext)
 
     return (
-        <div className="app">
+        <>
             { token && <Navbar token={token} logout={logout} /> }
             <Switch>
                 <Route
@@ -33,7 +34,8 @@ export default function App() {
                     token={token}
                 />
             </Switch>
-        </div>
+            <Footer />
+        </>
     )
 }
 

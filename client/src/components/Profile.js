@@ -1,13 +1,19 @@
 import React, {useEffect, useContext} from 'react'
 import IssueForm from './IssueForm.js'
-import IssueList from './IssueList.js'
+import Issue from './Issue'
 import { UserContext } from "../context/UserProvider.js"
+import {
+    Box,
+    Heading,
+    Divider,
+    Container,
+    Grid
+} from '@chakra-ui/react'
 
 
 export default function Profile() {
 
     const {
-        user: { username },
         getUserIssues,
         addUserIssue,
         issues
@@ -19,14 +25,17 @@ export default function Profile() {
 
 
     return (
-        <div className="profile">
-            <h1>Welcome {username}</h1>
-            <h3>Post your Issue</h3>
+        <Box h='100vh' justify='center' align='center'>
             <IssueForm addUserIssue={addUserIssue} />
-            <div className="topics">
-                <h3>Your Topics</h3>
-                <IssueList issues={issues} />
-            </div>
-        </div>
+                <Container m={4}>
+                    <Heading size='md' >Your Topics</Heading>
+                </Container>
+                <Divider />
+            <Box w='85%'>
+                <Grid templateColumns='repeat(3, 1fr)' gap={6}>
+                {issues.map(issue => <Issue {...issue} key={issue._id} />)}
+                </Grid>
+            </Box>
+        </Box>
     )
 }

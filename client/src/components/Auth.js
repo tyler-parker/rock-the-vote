@@ -40,6 +40,7 @@ export default function Auth() {
                         errMsg={errMsg}
                         title="Sign up for an account"
                         handleToggle={handleToggle}
+                        accountStatus='Already Have An Account?'
                     />
                 </>
                 :
@@ -52,6 +53,7 @@ export default function Auth() {
                         errMsg={errMsg}
                         title="Sign in to your account"
                         handleToggle={handleToggle}
+                        accountStatus="Don't Have An Account?"
                     />
                 </>
             }

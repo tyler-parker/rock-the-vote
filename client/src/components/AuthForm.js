@@ -23,6 +23,7 @@ export default function AuthForm(props){
     errMsg,
     title,
     handleToggle,
+    accountStatus,
     inputs: {
       username, 
       password
@@ -74,7 +75,7 @@ export default function AuthForm(props){
               { btnText }
               </Button>
               <Text>{errMsg}</Text>
-              <Link onClick={handleToggle} >Already Have An Account?</Link>
+              <Link onClick={handleToggle} >{accountStatus}</Link>
             </Stack>
         </Box>
       </Flex>
