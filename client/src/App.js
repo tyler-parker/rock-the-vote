@@ -14,7 +14,7 @@ export default function App() {
 
     return (
         <div className="app">
-            { token && <Navbar logout={logout} /> }
+            { token && <Navbar token={token} logout={logout} /> }
             <Switch>
                 <Route
                     exact path="/"

@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import { UserProvider } from './context/UserProvider.js';
 import { CommentProvider } from './context/CommentProvider.js';
+import { ChakraProvider } from "@chakra-ui/react"
 
 
 
@@ -12,7 +13,9 @@ ReactDOM.render(
   <BrowserRouter>
     <UserProvider>
       <CommentProvider>
-        <App />
+        <ChakraProvider>
+          <App />
+        </ChakraProvider>
       </CommentProvider>
     </UserProvider>
   </BrowserRouter>, document.getElementById('root')

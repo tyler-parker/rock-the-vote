@@ -26,10 +26,10 @@ export default function Auth() {
         e.preventDefault()
         login(inputs)
     }
+    const handleToggle = () => { setToggle(prev => !prev) }
 
     return (
-        <div className="auth-container">
-            <h1>Voting App</h1>
+        <>
             {!toggle ?
                 <>
                     <AuthForm
@@ -38,8 +38,9 @@ export default function Auth() {
                         inputs={inputs}
                         btnText="Sign Up"
                         errMsg={errMsg}
+                        title="Sign up for an account"
+                        handleToggle={handleToggle}
                     />
-                    <p onClick={() => setToggle(prev => !prev)}>Already a member?</p>
                 </>
                 :
                 <>
@@ -49,12 +50,13 @@ export default function Auth() {
                         inputs={inputs}
                         btnText="Login"
                         errMsg={errMsg}
+                        title="Sign in to your account"
+                        handleToggle={handleToggle}
                     />
-                    <p onClick={() => setToggle(prev => !prev)}>Not a member?</p>
                 </>
             }
 
-        </div>
+        </>
 
     )
 }
