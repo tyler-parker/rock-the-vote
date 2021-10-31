@@ -20,30 +20,26 @@ import { BsArrowUpSquareFill, BsArrowDownSquareFill, BsDot } from 'react-icons/b
 
 export default function Issue(props) {
 
-  const [userObj, setUserObj] = useState([])
+  // const [users, setUsers] = useState([])
   const [editToggle, setEditToggle] = useState(false)
   const [show, setShow] = useState(false)
-  const { title, description, imgUrl, _id, upVotes, downVotes, user } = props
-  const {username} = user
+  const { title, description, imgUrl, _id, upVotes, downVotes, userId } = props
   const { addUserIssue, deleteUserIssue } = useContext(UserContext)
-  const userAxios = axios.create()
+  // const userAxios = axios.create()
 
   const handleToggle = () => setShow(!show)
 
-  userAxios.interceptors.request.use(config => {
-    const token = localStorage.getItem("token")
-    config.headers.Authorization = `Bearer ${token}`
-    return config
-})
+//   userAxios.interceptors.request.use(config => {
+//     const token = localStorage.getItem("token")
+//     config.headers.Authorization = `Bearer ${token}`
+//     return config
+// })
 
-  useEffect(() => {
-    userAxios.get(`/api/users/${user}`)
-      .then(res => setUserObj(res.data))
-      .catch(err => console.log(err))
-  }, [])
-
-  const IMAGE =
-  'https://images.unsplash.com/photo-1518051870910-a46e30d9db16?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80';
+//   useEffect(() => {
+//     userAxios.get(`/api/users`)
+//       .then(res => setUsers(res.data))
+//       .catch(err => console.log(err))
+//   }, [])
 
   return (
       <Center py={12}>
@@ -92,7 +88,7 @@ export default function Issue(props) {
 
       <Stack pt={10} align={'center'}>
           <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-            { userObj.username }
+            { userId }
           </Text>
           <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
             { title }

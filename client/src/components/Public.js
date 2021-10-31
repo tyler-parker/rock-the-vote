@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import User from './User.js'
 import axios from "axios"
 import Issue from './Issue.js'
 import {
@@ -24,8 +23,6 @@ export default function Public() {
       .then(res => setIssues(res.data))
       .catch(err => console.log(err))
   }, [])
-
-
 
   return (
     <Box justify='center' align='center' m={5}>

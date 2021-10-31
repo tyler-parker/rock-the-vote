@@ -23,7 +23,6 @@ export default function Profile() {
         getUserIssues()
     }, [])
 
-
     return (
         <Box justify='center' align='center' m={5}>
             <IssueForm addUserIssue={addUserIssue} />
