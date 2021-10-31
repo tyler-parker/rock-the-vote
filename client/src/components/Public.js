@@ -25,6 +25,8 @@ export default function Public() {
       .catch(err => console.log(err))
   }, [])
 
+
+
   return (
     <Box justify='center' align='center' m={5}>
       <Center>

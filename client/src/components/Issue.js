@@ -1,5 +1,6 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import { UserContext } from "../context/UserProvider.js"
+import axios from 'axios'
 import EditIssueForm from "./EditIssueForm.js"
 import {
   Box,
@@ -19,12 +20,27 @@ import { BsArrowUpSquareFill, BsArrowDownSquareFill, BsDot } from 'react-icons/b
 
 export default function Issue(props) {
 
+  const [userObj, setUserObj] = useState([])
   const [editToggle, setEditToggle] = useState(false)
   const [show, setShow] = useState(false)
-  const { title, description, imgUrl, _id, upVotes, downVotes, user: { username } } = props
+  const { title, description, imgUrl, _id, upVotes, downVotes, user } = props
+  const {username} = user
   const { addUserIssue, deleteUserIssue } = useContext(UserContext)
+  const userAxios = axios.create()
 
   const handleToggle = () => setShow(!show)
+
+  userAxios.interceptors.request.use(config => {
+    const token = localStorage.getItem("token")
+    config.headers.Authorization = `Bearer ${token}`
+    return config
+})
+
+  useEffect(() => {
+    userAxios.get(`/api/users/${user}`)
+      .then(res => setUserObj(res.data))
+      .catch(err => console.log(err))
+  }, [])
 
   const IMAGE =
   'https://images.unsplash.com/photo-1518051870910-a46e30d9db16?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80';
@@ -76,7 +92,7 @@ export default function Issue(props) {
 
       <Stack pt={10} align={'center'}>
           <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-            { username }
+            { userObj.username }
           </Text>
           <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
             { title }
