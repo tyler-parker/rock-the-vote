@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const bcrypt = require('bcrypt')
+const faker = require('faker')
 
 const userSchema = new Schema({
   username: {
@@ -13,7 +14,6 @@ const userSchema = new Schema({
     type: String,
     required: true,
     hide: true
-
   },
   memberSince: {
     type: Date,

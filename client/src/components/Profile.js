@@ -25,14 +25,14 @@ export default function Profile() {
 
 
     return (
-        <Box h='100vh' justify='center' align='center'>
+        <Box justify='center' align='center' m={5}>
             <IssueForm addUserIssue={addUserIssue} />
                 <Container m={4}>
                     <Heading size='md' >Your Topics</Heading>
                 </Container>
                 <Divider />
             <Box w='85%'>
-                <Grid templateColumns='repeat(3, 1fr)' gap={6}>
+                <Grid templateColumns='repeat(2, 1fr)' gap={6}>
                 {issues.map(issue => <Issue {...issue} key={issue._id} />)}
                 </Grid>
             </Box>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
-import PublicIssues from "./PublicIssues.js"
 import axios from "axios"
+import Issue from "./Issue.js"
 
  function User(props) {
     const { username, _id} = props
@@ -20,9 +20,9 @@ import axios from "axios"
     }, [])
 
     return (
-        <div className="user-issue">
+        <div>
             <h3>{username}'s Issues</h3>
-            {issues.map(issue => <PublicIssues {...issue}  key={issue._id}/>)}
+            {issues.map(issue => <Issue {...issue} publicUsername={username} key={issue._id}/>)}
         </div>
     )
 }

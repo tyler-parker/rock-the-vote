@@ -16,9 +16,7 @@ export default function PublicIssues(props) {
     })
 
     const [userComments, setUserComments] = useState([])
-    const [userComment, setUserComment] = useState("")
     const [votes, setVotes] = useState({ upVotes: upVotes || 0, downVotes: downVotes || 0 })
-    const [voteErrMsg, setVoteErr] = useState("")
     const [commentToggle, setCommentToggle] = useState(false)
     
 
@@ -42,9 +40,9 @@ export default function PublicIssues(props) {
                 setUserComments(prevState => [...prevState, res.data])
             })
             .catch(err => console.log(err))
-        setUserComment("")
         getAllComments()
     }
+
     function deleteComment(commentId) {
         userAxios.delete(`/api/comment/${commentId}`)
             .then(res => setUserComments(prevState => prevState.filter(comment => comment._id !== commentId)))
@@ -55,7 +53,7 @@ export default function PublicIssues(props) {
     function upVote(issueId) {
         userAxios.put(`api/issue/upvotes/${issueId}`)
             .then(res => setVotes(prevVotes => ({ ...prevVotes, upVotes: res.data.upVotes || prevVotes.upVotes })))
-            .catch(err => setVoteErr(err.response.data.errMsg))
+            .catch(err => console.log(err))
     }
 
     function downVote(issueId) {
@@ -65,7 +63,6 @@ export default function PublicIssues(props) {
     }
 
     return (
-
         !commentToggle ?
             <div className="issue">
                 <h1>{title}</h1>
@@ -76,7 +73,6 @@ export default function PublicIssues(props) {
                 <button onClick={() => upVote(_id)}>UpVote</button>
                 <button onClick={() => downVote(_id)}>DownVote</button>
                 <button onClick={() => setCommentToggle(prevToggle => !prevToggle)}>View Comments</button>
-                <p>{voteErrMsg}</p>
             </div>
             :
             <div className="comment">
@@ -84,7 +80,5 @@ export default function PublicIssues(props) {
                 {userComments.map(comment => <Comment key={comment._id} {...comment} deleteComment={deleteComment} />)}
                 <button onClick={() => setCommentToggle(prevToggle => !prevToggle)}>Close Comments</button>
             </div>
-
-
     )
 }

@@ -1,16 +1,16 @@
 import React, {useState} from "react"
+import { Link } from 'react-router-dom'
 import {
     Flex,
     Box,
     FormControl,
     FormLabel,
     Input,
-    Checkbox,
     Stack,
-    Link,
     Button,
     Heading,
     Text,
+    Textarea,
     useColorModeValue,
   } from '@chakra-ui/react';
 
@@ -49,8 +49,8 @@ export default function PostForm(props){
         <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
             <Stack align={'center'}>
                 <Heading fontSize={'4xl'}>Create An Issue</Heading>
-                <Text fontSize={'lg'} color={'gray.600'}>
-                    to enjoy all of our cool <Link color={'blue.400'}>features</Link> ✌️
+                <Text fontSize={'lg'}>
+                    for other users to  <Link to='/public'>vote and comment on</Link> ✌️😎
                 </Text>
             </Stack>
             <Box
@@ -70,21 +70,21 @@ export default function PostForm(props){
                             />
                     </FormControl>
                     <FormControl>
-                        <FormLabel>Description</FormLabel>
-                            <Input
-                                onChange={handleChange} 
-                                type="text" 
-                                name="description"
-                                value={description}
-                            />
-                    </FormControl>
-                    <FormControl>
                         <FormLabel>Image URL</FormLabel>
                             <Input
                                 onChange={handleChange} 
                                 type="text"
                                 name="imgUrl"
                                 value={imgUrl}
+                            />
+                    </FormControl>
+                    <FormControl>
+                        <FormLabel>Description</FormLabel>
+                            <Textarea
+                                onChange={handleChange} 
+                                type="text" 
+                                name="description"
+                                value={description}
                             />
                     </FormControl>
                     <Stack spacing={10}>
@@ -102,29 +102,5 @@ export default function PostForm(props){
             </Box>
         </Stack>
     </Flex>
-
-        // <form onSubmit={handleSubmit}>
-        //     <input
-        //     type="text"
-        //     name="title"
-        //     value={title}
-        //     onChange={handleChange}
-        //     placeholder="title"
-        //     />
-        //      <input
-        //     type="text"
-        //     name="description"
-        //     value={description}
-        //     onChange={handleChange}
-        //     placeholder="Description"
-        //     />
-        //     <input
-        //     type="text"
-        //     name="imgUrl"
-        //     value={imgUrl}
-        //     onChange={handleChange}
-        //     placeholder="Supporting Image" />
-        //     <button>Post Issue</button>
-        // </form>
     )
 }
