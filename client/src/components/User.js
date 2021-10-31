@@ -22,7 +22,7 @@ import Issue from "./Issue.js"
     return (
         <div>
             <h3>{username}'s Issues</h3>
-            {issues.map(issue => <Issue {...issue} publicUsername={username} key={issue._id}/>)}
+            {issues.map(issue => <Issue {...issue} key={issue._id}/>)}
         </div>
     )
 }

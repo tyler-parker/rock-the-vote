@@ -10,29 +10,28 @@ import {
 } from '@chakra-ui/react'
 
 export default function Public() {
+  const [issues, setIssues] = useState([])
   const userAxios = axios.create()
 
   userAxios.interceptors.request.use(config => {
-    const token = localStorage.getItem("token")
-    config.headers.Authorization = `Bearer ${token}`
-    return config
+      const token = localStorage.getItem("token")
+      config.headers.Authorization = `Bearer ${token}`
+      return config
   })
 
-  const [users, setUsers] = useState([])
-
   useEffect(() => {
-    userAxios.get("/api/users")
-    .then(res => setUsers(res.data))
-    .catch(err => console.log(err.response.data.errMsg))
+      userAxios.get(`/api/issue`)
+      .then(res => setIssues(res.data))
+      .catch(err => console.log(err))
   }, [])
 
   return (
-    <Box>
+    <Box justify='center' align='center' m={5}>
       <Center>
-        <Heading>Public Issues</Heading>
+        <Heading textDecorationLine='underline' m={5}>Public Issues</Heading>
       </Center>
       <Grid templateColumns='repeat(2, 1fr)'>
-        {users.map(user => <User {...user}  key={user._id}/>)}
+          {issues.map(issue => <Issue {...issue}  key={issue._id}/>)}
       </Grid>
     </Box>
   )

@@ -21,8 +21,8 @@ export default function Issue(props) {
 
   const [editToggle, setEditToggle] = useState(false)
   const [show, setShow] = useState(false)
-  const { title, description, imgUrl, _id, upVotes, downVotes, publicUsername } = props
-  const { addUserIssue, deleteUserIssue, user: { username } } = useContext(UserContext)
+  const { title, description, imgUrl, _id, upVotes, downVotes, user: { username } } = props
+  const { addUserIssue, deleteUserIssue } = useContext(UserContext)
 
   const handleToggle = () => setShow(!show)
 
@@ -47,6 +47,7 @@ export default function Issue(props) {
       mt={-12}
       pos={'relative'}
       height={'250px'}
+      justify='center'
       _after={{
         transition: 'all .3s ease',
         content: '""',
@@ -75,7 +76,7 @@ export default function Issue(props) {
 
       <Stack pt={10} align={'center'}>
           <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-            { username || publicUsername }
+            { username }
           </Text>
           <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
             { title }
