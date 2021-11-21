@@ -1,6 +1,6 @@
 import React, {useEffect, useContext} from 'react'
 import IssueForm from './IssueForm.js'
-import IssueList from './IssueList.js'
+import Issue from './Issue'
 import { UserContext } from "../context/UserProvider.js"
 import {
     Box,
@@ -14,7 +14,6 @@ import {
 export default function Profile() {
 
     const {
-        user: { username },
         getUserIssues,
         addUserIssue,
         issues
@@ -34,7 +33,7 @@ export default function Profile() {
             <IssueForm addUserIssue={addUserIssue} />
             <Box w='85%'>
                 <Grid templateColumns='1fr' gap={6}>
-                    <IssueList issues={issues} />
+                    {issues.map(issue => <Issue {...issue} key={issue._id} />)}
                 </Grid>
             </Box>
         </Box>
