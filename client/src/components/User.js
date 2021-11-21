@@ -4,7 +4,8 @@ import axios from "axios"
 import {
     Box,
     Heading,
-    Divider
+    Divider,
+    Grid
 } from '@chakra-ui/react'
 
  function User(props) {
@@ -33,7 +34,9 @@ import {
         >
             <Divider />
             <Heading align='center' p={4}>{username}'s Issues</Heading>
-            {issues.map(issue => <PublicIssues {...issue}  key={issue._id}/>)}
+            <Grid gridTemplateColumns='repeat(2, 1fr)' gap={6}>
+                {issues.map(issue => <PublicIssues {...issue}  key={issue._id}/>)}
+            </Grid>
         </Box>
     )
 }

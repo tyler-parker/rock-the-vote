@@ -97,8 +97,8 @@ export default function PublicIssues(props) {
         >
           <Image
             rounded={'lg'}
-            height={230}
-            width={282}
+            height={330}
+            width={382}
             objectFit={'cover'}
             src={imgUrl}
           />
@@ -123,24 +123,15 @@ export default function PublicIssues(props) {
                   </Collapse>
               </Box>
               <HStack align='center' justify='center' spacing={5} pt={5}>
-                <Button
-                  variant='outline' 
-                  colorScheme='teal' 
-                  size='md'
-                  onClick={() => setCommentToggle(prevState => !prevState)}
-                >
-                  Edit Issue
-                </Button>
-
-              </HStack>
-            </Stack>
-          </Stack>
                 <h3>UpVotes: {votes.upVotes}</h3>
                 <h3>DownVotes: {votes.downVotes}</h3>
                 <button onClick={() => upVote(_id)}>UpVote</button>
                 <button onClick={() => downVote(_id)}>DownVote</button>
                 <button onClick={() => setCommentToggle(prevToggle => !prevToggle)}>View Comments</button>
                 <p>{voteErrMsg}</p>
+              </HStack>
+            </Stack>
+          </Stack>
         </Box>
             :
             <div className="comment">
