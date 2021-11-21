@@ -5,16 +5,15 @@ import axios from "axios"
 import {
     Box,
     Center,
-    Button,
     Heading,
     Text,
     Stack,
     Image,
     Collapse,
     HStack,
-    Avatar,
+    Button,
     IconButton,
-    Icon
+    Divider,
   } from '@chakra-ui/react';
   import { BsArrowUpSquareFill, BsArrowDownSquareFill, BsDot } from 'react-icons/bs'
 
@@ -82,63 +81,81 @@ export default function PublicIssues(props) {
     }
 
     return (
-
-    <Center py={12}>
+        <Center py={12}>
         {!commentToggle ?
-       <Box
-        role={'group'}
-        p={6}
-        maxW={'950px'}
-        w={'full'}
-        boxShadow={'2xl'}
-        rounded={'lg'}
-        pos={'relative'}
-        align='center'
-        >
-          <Image
+        <Box
+            role={'group'}
+            p={6}
+            maxW={'950px'}
+            w={'full'}
+            boxShadow={'2xl'}
             rounded={'lg'}
-            height={330}
-            width={382}
-            objectFit={'cover'}
-            src={imgUrl}
-          />
-          <Stack pt={10} align={'center'}>
-            <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-              { userId }
-            </Text>
-            <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
-              { title }
-            </Heading>
-            <Stack mt={2}>
-              <Box as='button'>
-                  <Collapse 
-                    onClick={handleToggle} 
-                    wordBreak 
-                    fontWeight={600} 
-                    fontSize={'lg'}
-                    startingHeight={20} 
-                    in={show}
-                    >
-                    { description }
-                  </Collapse>
-              </Box>
-              <HStack align='center' justify='center' spacing={5} pt={5}>
-                <h3>UpVotes: {votes.upVotes}</h3>
-                <h3>DownVotes: {votes.downVotes}</h3>
-                <button onClick={() => upVote(_id)}>UpVote</button>
-                <button onClick={() => downVote(_id)}>DownVote</button>
-                <button onClick={() => setCommentToggle(prevToggle => !prevToggle)}>View Comments</button>
-                <p>{voteErrMsg}</p>
-              </HStack>
+            pos={'relative'}
+            align='center'
+            >
+            <Image
+                rounded={'lg'}
+                height={330}
+                width={382}
+                objectFit={'cover'}
+                src={imgUrl}
+            />
+                <Stack pt={10} align={'center'}>
+                    <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
+                    { userId }
+                    </Text>
+                    <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
+                    { title }
+                    </Heading>
+                    <Stack mt={2}>
+                        <Box as='button'>
+                            <Collapse 
+                                onClick={handleToggle} 
+                                wordBreak 
+                                fontWeight={600} 
+                                fontSize={'lg'}
+                                startingHeight={20} 
+                                in={show}
+                                >
+                                { description }
+                            </Collapse>
+                        </Box>
+                        <Divider />
+                        <HStack align='center' justify='center' spacing={5} pt={5}>
+                            <span>{votes.upVotes}</span>
+                            <IconButton 
+                                onClick={() => upVote(_id)}
+                                icon={<BsArrowUpSquareFill />}
+                                colorScheme='green'
+                            >
+                                UpVote
+                            </IconButton>
+                            <IconButton 
+                                onClick={() => downVote(_id)}
+                                icon={<BsArrowDownSquareFill />}
+                                colorScheme='red'
+                                >
+                                DownVote
+                            </IconButton>
+                            <span>{votes.downVotes}</span>
+                            <Button 
+                                onClick={() => setCommentToggle(prevToggle => !prevToggle)}
+
+                            >
+                                View Comments
+                            </Button>
+                            <Text color='red.600'>{voteErrMsg}</Text>
+                        </HStack>
+                    </Stack>
             </Stack>
-          </Stack>
         </Box>
-            :
+        :
             <div className="comment">
                 <CommentForm _id={_id} submitComment={submitComment}/>
                 {userComments.map(comment => <Comment key={comment._id} {...comment} deleteComment={deleteComment} />)}
                 <button onClick={() => setCommentToggle(prevToggle => !prevToggle)}>Close Comments</button>
-            </div>}
-    </Center>
+            </div>
+        }
+        </Center>
     )
 }
