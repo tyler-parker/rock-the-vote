@@ -32,7 +32,7 @@ export default function Profile() {
                 <Divider />
             <IssueForm addUserIssue={addUserIssue} />
             <Box w='85%'>
-                <Grid templateColumns='1fr' gap={6}>
+                <Grid templateColumns='repeat(2, 1fr)' gap={6}>
                     {issues.map(issue => <Issue {...issue} key={issue._id} />)}
                 </Grid>
             </Box>

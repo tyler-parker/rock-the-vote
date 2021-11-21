@@ -66,43 +66,28 @@ export default function Issue(props) {
                     { description }
                   </Collapse>
               </Box>
-
-              {/* <HStack align='center' justify='center' spacing={5} pt={5}>
-                <Button
-                  onClick={() => setEditToggle(prevState => !prevState)}
-                  variant='outline' 
-                  colorScheme='teal' 
-                  size='md'
-                  w='45%'
-                >
-                  Edit Issue
-                </Button>
-
-                <Button 
-                onClick={deleteUserIssue(_id)}
-                variant='outline' 
-                colorScheme='red' 
-                size='md' 
-                w='45%'
-                >
-                  Delete Issue
-                </Button>
-              </HStack> */}
               <HStack align='center' justify='center' spacing={5} pt={5}>
                 <Button
                   variant='outline' 
                   colorScheme='teal' 
                   size='md'
-                  // w='45%'
+                  onClick={() => setEditToggle(prevState => !prevState)}
                 >
                   Edit Issue
                 </Button>
 
-                
+                <Button 
+                  onClick={() => deleteUserIssue(_id)}
+                  variant='outline' 
+                  colorScheme='red' 
+                  size='md' 
+                >
+                  Delete Issue
+                </Button>
+
               </HStack>
             </Stack>
           </Stack>
-          <h3>{ description }</h3>
           <button onClick={() => deleteUserIssue(_id)}>Delete Issue</button>
           <button onClick={() => setEditToggle(prevState => !prevState)}>Edit Issue</button>
         </Box>
