@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react"
 import PublicIssues from "./PublicIssues.js"
 import axios from "axios"
+import {
+    Box,
+    Heading,
+    Divider
+} from '@chakra-ui/react'
 
  function User(props) {
     const { username, _id} = props
@@ -20,10 +25,16 @@ import axios from "axios"
     }, [])
 
     return (
-        <div className="user-issue">
-            <h3>{username}'s Issues</h3>
+        <Box 
+        role={'group'}
+        p={6}
+        w={'full'}
+        pos={'relative'}
+        >
+            <Divider />
+            <Heading align='center' p={4}>{username}'s Issues</Heading>
             {issues.map(issue => <PublicIssues {...issue}  key={issue._id}/>)}
-        </div>
+        </Box>
     )
 }
 
