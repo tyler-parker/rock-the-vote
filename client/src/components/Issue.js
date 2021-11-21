@@ -1,6 +1,13 @@
 import React, { useState, useContext } from "react"
 import { UserContext } from "../context/UserProvider.js"
 import EditIssueForm from "./EditIssueForm.js"
+import {
+  Box,
+  Heading,
+  Divider,
+  Container,
+  Grid
+} from '@chakra-ui/react'
 
 export default function Issue(props) {
 
