@@ -19,7 +19,7 @@ import { UserContext } from "../context/UserProvider.js"
 export default function Navbar(props) {
 
   const { logout, token } = props
-  const {user: { username }} = useContext(UserContext)
+  const {user: { username, avatar }} = useContext(UserContext)
   const { colorMode, toggleColorMode } = useColorMode()
   const [avatarUrl, setAvatarUrl] = useState('')
   

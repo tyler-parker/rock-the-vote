@@ -21,9 +21,6 @@ function UserProvider(props) {
 
     const [userState, setUserState] = useState(initState)
     const [allIssues, setAllIssues] = useState([])
-    const [issueComments, setIssueComments] = useState([])
-    //const [comments, setComments] = useState([])
-    const [issueComment, setIssueComment] = useState("")
 
     function signup(credentials) {
         axios.post('/auth/signup', credentials)

@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { UserContext } from "../context/UserProvider.js"
 import {
     Menu,
     MenuButton,
@@ -9,11 +10,13 @@ import {
     MenuDivider,
     MenuItem,
     Button,
-    Text
+    Text,
+    Heading
 } from '@chakra-ui/react'
 
 export default function UserMenu(props) {
-    const { avatarUrl, logout, username } = props
+    const { avatarUrl, logout } = props
+    const {user: { username, avatar }} = useContext(UserContext)
 
     return (
         <>
@@ -39,7 +42,7 @@ export default function UserMenu(props) {
                   </Center>
                   <br />
                   <Center>
-                    <Text>{username}</Text>
+                    <Heading >{username}</Heading>
                   </Center>
                   <br />
                   <MenuDivider />

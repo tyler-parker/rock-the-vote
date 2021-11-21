@@ -140,7 +140,6 @@ export default function PublicIssues(props) {
                             <span>{votes.downVotes}</span>
                             <Button 
                                 onClick={() => setCommentToggle(prevToggle => !prevToggle)}
-
                             >
                                 View Comments
                             </Button>
@@ -150,11 +149,12 @@ export default function PublicIssues(props) {
             </Stack>
         </Box>
         :
-            <div className="comment">
-                <CommentForm _id={_id} submitComment={submitComment}/>
-                {userComments.map(comment => <Comment key={comment._id} {...comment} deleteComment={deleteComment} />)}
-                <button onClick={() => setCommentToggle(prevToggle => !prevToggle)}>Close Comments</button>
-            </div>
+            <Box>
+                <CommentForm _id={_id} toggle={setCommentToggle} submitComment={submitComment}/>
+                {userComments.map(comment => 
+                    <Comment key={comment._id} {...comment} userComments={userComments} deleteComment={deleteComment} />
+                )}
+            </Box>
         }
         </Center>
     )
