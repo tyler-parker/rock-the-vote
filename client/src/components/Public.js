@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import User from './User.js'
 import axios from "axios"
+import {
+  Center,
+  Heading,
+  Stack,
+  Box
+} from '@chakra-ui/react';
 
 export default function Public() {
   const userAxios = axios.create()
@@ -20,11 +26,11 @@ export default function Public() {
   }, [])
 
   return (
-    <div className="public">
-    <h1>Public Issues</h1>
-    <div className="publicIssues">
-      {users.map(user => <User {...user}  key={user._id}/>)}
-    </div>
-    </div>
+        <Stack align='center' w='full'>
+            <Heading size='2xl' m={5}>Public Issues</Heading>
+            <Box w="full">
+              {users.map(user => <User {...user}  key={user._id}/>)}
+            </Box>
+        </Stack>
   )
 }
