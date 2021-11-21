@@ -88,15 +88,15 @@ export default function Issue(props) {
               </HStack>
             </Stack>
           </Stack>
-          <button onClick={() => deleteUserIssue(_id)}>Delete Issue</button>
-          <button onClick={() => setEditToggle(prevState => !prevState)}>Edit Issue</button>
         </Box>
           :
-          <>
-            <EditIssueForm {...props}  setEditToggle={setEditToggle} addUserIssue={addUserIssue} />
-            <button onClick={() => deleteUserIssue(_id)}>Delete Issue</button>
-            <button onClick={() => setEditToggle(prevState => !prevState)}>Cancel</button>
-          </>
+            <EditIssueForm 
+              _id={_id} 
+              deleteUserIssue={deleteUserIssue} 
+              {...props}  
+              setEditToggle={setEditToggle} 
+              addUserIssue={addUserIssue} 
+            />
       }
     </Center>
   )
