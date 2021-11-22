@@ -19,7 +19,7 @@ import { UserContext } from "../context/UserProvider.js"
 export default function Navbar(props) {
 
   const { logout, token } = props
-  const {user: { username }} = useContext(UserContext)
+  const {user: { username, avatar }} = useContext(UserContext)
   const { colorMode, toggleColorMode } = useColorMode()
   const [avatarUrl, setAvatarUrl] = useState('')
   
@@ -28,11 +28,11 @@ export default function Navbar(props) {
   }, [token])
 
   return (
-    <>
-    {console.log(avatarUrl)} 
-      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+      <Box bg={useColorModeValue('gray.100', 'gray.900')}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <Heading size='xl' color='teal.400'>Rock-The-Vote</Heading>
+        <Link to='/public'>
+          <Heading size='xl' color='teal.400' m={6}>Rock-The-Vote</Heading>
+        </Link>
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={5} justify='center' align='center'>
               <Text fontSize='large'>Welcome, { username }</Text>
@@ -44,6 +44,5 @@ export default function Navbar(props) {
           </Flex>
         </Flex>
       </Box>
-    </>
   )
 }
