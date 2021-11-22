@@ -42,7 +42,12 @@ export default function CommentForm(props) {
     const { comment } = inputs
 
     return (
-        <Box border='solid' borderColor='gray.200' p={4} boxShadow={'xl'} m={6}>
+        <Box 
+            border='solid' 
+            borderColor='gray.200' 
+            p={4} 
+            boxShadow={'xl'} m={6}
+        >
                 <FormControl>
                     <FormLabel>Title</FormLabel>
                         <Input

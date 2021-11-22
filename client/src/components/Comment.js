@@ -35,7 +35,7 @@ useEffect(() => {
                     <AccordionButton>
                         <Box flex="1" textAlign="left">
                             <HStack>
-                                <Avatar name={username} src={avatarUrl}/>
+                                <Avatar name={username}/>
                                 <Heading size='lg'>@{username}</Heading>
                             </HStack>
                         </Box>

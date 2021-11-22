@@ -29,7 +29,7 @@ export default function UserMenu(props) {
                   minW={0}>
                   <Avatar
                     size={'md'}
-                    src={avatarUrl}
+                    name={username}
                   />
                 </MenuButton>
                 <MenuList alignItems={'center'}>
@@ -37,12 +37,8 @@ export default function UserMenu(props) {
                   <Center>
                     <Avatar
                       size={'2xl'}
-                      src={avatarUrl} 
+                      name={username} 
                     />
-                  </Center>
-                  <br />
-                  <Center>
-                    <Heading >{username}</Heading>
                   </Center>
                   <br />
                   <MenuDivider />
