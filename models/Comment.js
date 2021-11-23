@@ -1,5 +1,8 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const faker = require('faker')
+
+avatarImg = faker.image.animals()
 
 const commentSchema = new Schema({
   comment: {
@@ -20,6 +23,10 @@ const commentSchema = new Schema({
     ref: "User",
     required: true
 
+  },
+  avatar: {
+    type: String,
+    default: avatarImg
   }
 })
 
