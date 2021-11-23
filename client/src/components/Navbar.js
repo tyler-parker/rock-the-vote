@@ -34,8 +34,12 @@ export default function Navbar(props) {
           <Heading size='xl' color='teal.400' m={6}>Rock-The-Vote</Heading>
         </Link>
           <Flex alignItems={'center'}>
-            <Stack direction={'row'} spacing={5} justify='center' align='center'>
-              <Text fontSize='large'>Welcome, { username }</Text>
+            <Stack p={5} direction={'row'} spacing={5} justify='center' align='center'>
+              { token ?
+                <Text fontSize='large'>Welcome, { username }</Text>
+                  :
+                <span />
+              }
               <Button onClick={toggleColorMode}>
                 {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
               </Button>

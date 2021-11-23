@@ -68,7 +68,6 @@ export default function AuthForm(props){
                 onClick={handleSubmit} 
                 colorScheme={'blue'} 
                 variant={'solid'}
-                
                 size='lg'
                 w='70%'
               >
